@@ -10,6 +10,3 @@ $(document).ready(function() {
     shoppingList.render();
   });
 });
-
-// const item = store.items[0];
-// store.findAndUpdate(item.id, { name: 'foobar' });

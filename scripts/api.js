@@ -6,9 +6,6 @@ let api = (function () {
   return {
     getItems: callback => {
       $.getJSON(BASE_URL + '/items', callback);
-      const item = store.items[0];
-      store.findAndUpdate(item.id, { name: 'foobar' });
-      console.log('new name: ' + item.name);
     },
     createItem: (name, callback) => {
       let newItem = JSON.stringify({ name });
@@ -18,6 +15,14 @@ let api = (function () {
         contentType: 'application/json',
         data: newItem,
         success: callback,
+      });
+    },
+    deleteItem: (id, callback) => {
+      $.ajax({
+        url:`${BASE_URL}/items/${id}`,
+        method: 'DELETE',
+        contentType: 'application/json',
+        success: callback
       });
     },
     updateItem: (id, updateData, callback) => {
