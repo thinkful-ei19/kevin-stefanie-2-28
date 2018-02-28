@@ -6,9 +6,7 @@ let api = (function () {
   return {
     getItems: callback => $.getJSON(BASE_URL + '/items', callback),
     createItem: (name, callback) => {
-      let newItem = JSON.stringify({
-        name: name,
-      });
+      let newItem = JSON.stringify({ name });
       $.ajax({
         url: BASE_URL + '/items',
         method: 'POST',
