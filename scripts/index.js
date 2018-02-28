@@ -10,9 +10,3 @@ $(document).ready(function() {
     shoppingList.render();
   });
 });
-
-// api.createItem('pears', (newItem) => {
-//   api.getItems((items) => {
-//     console.log(items);
-//   });
-// });

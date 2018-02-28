@@ -14,6 +14,17 @@ let api = (function () {
         data: newItem,
         success: callback,
       });
-    }
+    },
+    updateItem: (id, updateData, callback) => {
+      let newData = JSON.stringify( updateData );
+      console.log(newData);
+      $.ajax({
+        url: `${BASE_URL}/items/${id}`,
+        method: 'PATCH',
+        contentType: 'application/json',
+        data: newData,
+        success: callback,
+      });
+    },
   };
 })();
