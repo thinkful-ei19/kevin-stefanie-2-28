@@ -4,7 +4,12 @@
 let api = (function () {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/kevin';
   return {
-    getItems: callback => $.getJSON(BASE_URL + '/items', callback),
+    getItems: callback => {
+      $.getJSON(BASE_URL + '/items', callback);
+      const item = store.items[0];
+      store.findAndUpdate(item.id, { name: 'foobar' });
+      console.log('new name: ' + item.name);
+    },
     createItem: (name, callback) => {
       let newItem = JSON.stringify({ name });
       $.ajax({
