@@ -52,7 +52,11 @@ const shoppingList = (function(){
     const shoppingListItemsString = generateShoppingItemsString(items);
   
     // insert that HTML into the DOM
-    $('.js-shopping-list').html(shoppingListItemsString);
+    setTimeout(() => {
+      $('.js-shopping-list').html(shoppingListItemsString);
+    }, 1000);
+
+    // $('.js-shopping-list').html(shoppingListItemsString);
   }
   
   
@@ -87,11 +91,13 @@ const shoppingList = (function(){
   
   function handleDeleteItemClicked() {
     $('.js-shopping-list').on('click', '.js-item-delete', event => {
-      const id = getItemIdFromElement(event.currentTarget);
-      api.deleteItem(id, () => {
-        store.findAndDelete(id);
-        render();
-      });
+      if (confirm('are you sure?')) {
+        const id = getItemIdFromElement(event.currentTarget);
+        api.deleteItem(id, () => {
+          store.findAndDelete(id);
+          render();
+        });
+      }
     });
   }
   
